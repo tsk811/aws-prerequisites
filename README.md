@@ -1,4 +1,4 @@
-# aws-prerequisites
+# Prerequisites
 
 The below setup needs to be completed manually before using the other projects. All of these are mandatory for Cross Account Deployments.
 
@@ -8,6 +8,7 @@ The below setup needs to be completed manually before using the other projects. 
 This account will host the pipeline for Infra and App deployments.
 
 #### Resources 
+
 
 * Create an **Artifact Bucket** to store the artifacts generated from the pipeline.
     1. Add below policy to the bucket.
@@ -75,6 +76,10 @@ Creating the above bucket(without policy) is mandatory even if you are not doing
     4. /configs/kms_key --> ARN of the **KMS Key**.
 
 
+* Create the below secret in Secrets Manager.
+    1. /secrets/github_token --> {"token": "<*Github_OAuth_token*>"} --> This needed to checkout the source code.
+
+
 ### Production account
 -----
 
@@ -126,4 +131,3 @@ Creating the above bucket(without policy) is mandatory even if you are not doing
         }
 * Create a CloudFormation **Deployment Role** to allow CloudFormation to create resources.
     1. Policy with Admin privileges or restricted permissions based on the resources which you need.
-
